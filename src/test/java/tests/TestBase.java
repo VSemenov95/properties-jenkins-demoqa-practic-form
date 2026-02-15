@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.BuildConfig;
 import helpers.Attach;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -25,9 +24,6 @@ public abstract class TestBase {
         Configuration.browserVersion = buildConfig.getBrowserVersion();
         Configuration.remote = buildConfig.getRemoteUrl();
         Configuration.baseUrl = buildConfig.getBaseUrl();
-        Configuration.timeout = buildConfig.getTimeout();
-        Configuration.headless = Boolean.parseBoolean(buildConfig.getIsHeadless());
-        Configuration.pageLoadStrategy = buildConfig.getPageLoadStrategy();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
         Configuration.browserCapabilities = capabilities;
