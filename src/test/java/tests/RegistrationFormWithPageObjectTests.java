@@ -2,18 +2,24 @@ package tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pages.FormsPage;
+import pages.MainPage;
 import pages.RegistrationPage;
 
 class RegistrationFormWithPageObjectTests extends TestBase{
        RegistrationPage registrationPage = new RegistrationPage();
        TestData testData = new TestData();
+       MainPage mainPage = new MainPage();
+       FormsPage formsPage = new FormsPage();
 
     @Test
     @DisplayName("Проверка регистрации с заполнением всех полей")
     void successfulRegistrationTest() {
-
+      mainPage
+              .openForms();
+      formsPage
+              .openPracticeForm();
       registrationPage
-            .openPage()
             .setFirstName(testData.firstName)
             .setLastName(testData.lastName)
             .setEmail(testData.email)
@@ -43,8 +49,11 @@ class RegistrationFormWithPageObjectTests extends TestBase{
     @Test
     @DisplayName("Проверка регистрации с заполнением только обязательных полей")
     void successfulFillingRequiredFieldsForm() {
+        mainPage
+                .openForms();
+        formsPage
+                .openPracticeForm();
         registrationPage
-                .openPage()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
                 .setGender(testData.gender)
@@ -61,8 +70,11 @@ class RegistrationFormWithPageObjectTests extends TestBase{
     @DisplayName("Проверка с незаполненным полем First Name")
 
     void checkRegistrationWithoutFirstName() {
+        mainPage
+                .openForms();
+        formsPage
+                .openPracticeForm();
         registrationPage
-                .openPage()
                 .setFirstName("")
                 .setLastName(testData.lastName)
                 .setGender(testData.gender)
