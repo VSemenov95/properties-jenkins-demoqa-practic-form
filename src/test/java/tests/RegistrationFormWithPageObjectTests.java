@@ -12,9 +12,8 @@ class RegistrationFormWithPageObjectTests extends TestBase{
     @DisplayName("Проверка регистрации с заполнением всех полей")
     void successfulRegistrationTest() {
 
-        registrationPage
+      registrationPage
             .openPage()
-            .removeBanner()
             .setFirstName(testData.firstName)
             .setLastName(testData.lastName)
             .setEmail(testData.email)
@@ -46,7 +45,6 @@ class RegistrationFormWithPageObjectTests extends TestBase{
     void successfulFillingRequiredFieldsForm() {
         registrationPage
                 .openPage()
-                .removeBanner()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
                 .setGender(testData.gender)
@@ -65,7 +63,6 @@ class RegistrationFormWithPageObjectTests extends TestBase{
     void checkRegistrationWithoutFirstName() {
         registrationPage
                 .openPage()
-                .removeBanner()
                 .setFirstName("")
                 .setLastName(testData.lastName)
                 .setGender(testData.gender)
